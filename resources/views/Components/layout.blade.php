@@ -59,11 +59,6 @@
   </div>
 </nav>
 
-<!-- Categories header (larger) -->
-<div class="max-w-3xl mx-auto mt-6 px-4 sm:px-6 lg:px-8">
-  <h2 class="text-2xl sm:text-2xl font-bold text-white">Categories</h2>
-</div>
-
 {{ $slot }}
 
 </body>

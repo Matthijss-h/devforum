@@ -5,6 +5,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [ThreadController::class, 'index'])->name('threads.index');
+Route::get('/threads/{thread}', [ThreadController::class, 'show'])->name('threads.show');
 
 Route::get('/dashboard', function () {
     return view('dashboard');

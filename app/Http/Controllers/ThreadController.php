@@ -36,9 +36,12 @@ class ThreadController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Thread $thread)
     {
-        //
+        // Load the thread with its topics and the user who created each topic
+        $thread->load(['topics.user', 'topics.replies']);
+        
+        return view('threads.show', compact('thread'));
     }
 
     /**
