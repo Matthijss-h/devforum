@@ -6,7 +6,7 @@
 
 <ul role="list" class="divide-y divide-white/5 max-w-3xl mx-auto mt-4 bg-gray-800/10 rounded-md p-2">
     @foreach($threads as $thread)
-    <li class="flex justify-between gap-x-6 py-5 hover:bg-white/5 transition-colors">
+    <li class="flex justify-between gap-x-6 py-5 px-4 hover:bg-white/5 transition-colors">
         <a href="{{ route('threads.show', $thread) }}" class="flex min-w-0 gap-x-4 flex-1">
             <div class="size-12 flex-none rounded-full bg-indigo-600/30 flex items-center justify-center text-white font-semibold">
                 {{$thread->title[0]}}

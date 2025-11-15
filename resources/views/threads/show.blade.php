@@ -1,8 +1,13 @@
 <x-layout>
 
-<!-- Categories header -->
+<!-- Back to Threads Button -->
 <div class="max-w-3xl mx-auto mt-6 px-4 sm:px-6 lg:px-8">
-  <h2 class="text-2xl sm:text-2xl font-bold text-white">Category</h2>
+    <div class="flex items-center justify-between mb-4">
+        <h2 class="text-2xl sm:text-2xl font-bold text-white">Category</h2>
+        <a href="{{ route('threads.index') }}" class="px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-500 transition">
+            Back to Threads
+        </a>
+    </div>
 </div>
 
 <!-- Thread Header -->
