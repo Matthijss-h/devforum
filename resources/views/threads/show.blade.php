@@ -1,5 +1,15 @@
 <x-layout>
 
+
+<!-- Breadcrumb Navigation -->
+<div class="max-w-3xl mx-auto mt-6 px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center gap-2 text-sm text-gray-400 mb-4">
+        <a href="{{ route('threads.index') }}" class="hover:text-white transition">Forums</a>
+        <span>›</span>
+        <a href="{{ route('threads.show', $thread) }}" class="hover:text-white transition">{{ $thread->title }}</a>
+    </div>
+</div>
+
 <!-- Back to Threads Button -->
 <div class="max-w-3xl mx-auto mt-6 px-4 sm:px-6 lg:px-8">
     <div class="flex items-center justify-between mb-4">
@@ -9,6 +19,15 @@
         </a>
     </div>
 </div>
+
+<!-- Success Message -->
+@if(session('success'))
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 mb-4">
+        <div class="bg-green-600/20 border border-green-600/30 rounded-lg p-4">
+            <p class="text-green-400">{{ session('success') }}</p>
+        </div>
+    </div>
+@endif
 
 <!-- Thread Header -->
 <div class="max-w-3xl mx-auto mt-6 px-4 sm:px-6 lg:px-8">
@@ -37,28 +56,33 @@
     <div class="flex items-center justify-between mb-4">
         <h2 class="text-xl font-semibold text-white">Topics</h2>
         @auth
-        <button class="px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-500 transition">
+        <a href="{{ route('topics.create', $thread) }}" class="px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-500 transition">
             New Topic
-        </button>
+        </a>
         @endauth
     </div>
 
     @if($thread->topics->isEmpty())
         <div class="bg-gray-800/30 rounded-lg p-8 text-center">
-            <p class="text-gray-400">No topics yet. Be the first to start a discussion!</p>
+            <p class="text-gray-400 mb-4">No topics yet. Be the first to start a discussion!</p>
+            @auth
+                <a href="{{ route('topics.create', $thread) }}" class="inline-block px-6 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-500 transition">
+                    Create First Topic
+                </a>
+            @endauth
         </div>
     @else
         <ul role="list" class="divide-y divide-white/5 bg-gray-800/10 rounded-md">
             @foreach($thread->topics as $topic)
             <li class="p-5 hover:bg-white/5 transition-colors">
-                <div class="flex gap-x-4">
+                <a href="{{ route('topics.show', [$thread, $topic]) }}" class="flex gap-x-4">
                     <img src="https://ui-avatars.com/api/?name={{ urlencode($topic->user->name) }}&background=6366f1&color=fff" 
                          alt="{{ $topic->user->name }}" 
                          class="size-10 flex-none rounded-full">
                     <div class="flex-1 min-w-0">
                         <div class="flex items-start justify-between gap-x-4">
                             <div class="flex-1">
-                                <p class="text-sm font-semibold text-white">{{ $topic->title }}</p>
+                                <p class="text-sm font-semibold text-white hover:text-indigo-400 transition">{{ $topic->title }}</p>
                                 <p class="text-xs text-gray-400 mt-1">
                                     by {{ $topic->user->name }} • {{ $topic->created_at->diffForHumans() }}
                                 </p>
@@ -70,7 +94,7 @@
                         </div>
                         <p class="mt-3 text-sm text-gray-300 line-clamp-2">{{ $topic->body }}</p>
                     </div>
-                </div>
+                </a>
             </li>
             @endforeach
         </ul>
