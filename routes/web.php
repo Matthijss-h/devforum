@@ -17,6 +17,10 @@ Route::middleware('auth')->group(function () {
 
 Route::get('/threads/{thread}/topics/{topic}', [TopicController::class, 'show'])->name('topics.show');
 
+Route::middleware('auth')->group(function () {
+    Route::post('/threads/{thread}/topics/{topic}/replies', [ReplyController::class, 'store'])->name('replies.store');
+});
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
