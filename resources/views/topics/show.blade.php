@@ -72,9 +72,10 @@
                     <textarea
                         id="body"
                         name="body"
-                        rows="6"
-                        class="w-full px-4 py-2 bg-gray-900 border border-gray-700 rounded-md text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent resize-none"
-                        placeholder="Provide details about your topic..."
+                        rows="3"
+                        class="w-full px-4 py-2 bg-gray-900 border border-gray-700 rounded-md text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent resize-none overflow-hidden"
+                        placeholder="Enter your reply here..."
+                        oninput="this.style.height = 'auto'; this.style.height = (this.scrollHeight) + 'px'"
                         required
                     >{{ old('body') }}</textarea>
 
