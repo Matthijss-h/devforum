@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Foral</title>
+    <link rel="icon" href="{{ asset('images/foral_logo.png') }}" type="image/png">
     <script src="https://cdn.tailwindcss.com"></script>
     <script type="module" src="https://cdn.jsdelivr.net/npm/@tailwindplus/elements@1"></script>
 </head>
@@ -28,7 +29,7 @@
       </div>
       <div class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
         <div class="flex shrink-0 items-center">
-          <img class="h-10 w-auto" src="{{ asset('images/foral_logo_transparant.png') }}" alt="Logo"> 
+          <img class="h-10" src="{{ asset('images/foral_logo_transparent.png') }}" alt="Logo"> 
         </div>
         <div class="hidden sm:ml-6 sm:block">
           <div class="flex items-center h-16">
